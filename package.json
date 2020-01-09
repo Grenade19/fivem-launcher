@@ -1,0 +1,79 @@
+{
+	"name": "allenvis.launcher",
+	"version": "1.0.0",
+	"description": "electron application",
+	"main": "main.js",
+	"scripts": {
+		"dev": "webpack-dev-server --config ./webpack.config.js",
+		"publish": "set NODE_ENV=production&& webpack --config ./webpack.config.js -p",
+		"l:publish": "NODE_ENV=production webpack --config ./webpack.config.js -p",
+		"run_electron": "set NODE_ENV=dev && electron ./main",
+		"l:run_electron": "NODE_ENV=dev electron ./main",
+		"preview": "npm run publish && set NODE_ENV=dev && electron ./main",
+		"electron:rebuild": "npm rebuild --runtime=electron --target=3.0.7 --disturl=https://atom.io/download/atom-shell --abi=64",
+		"pack": "npm run publish && set NODE_ENV=production&& electron-builder --win --x64 portable",
+		"linux:pack": "npm run l:publish && NODE_ENV=production electron-builder --linux --x64 portable"
+	},
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"keywords": [
+		"fivem",
+		"launcher",
+		"electron",
+		"webpack"
+	],
+	"author": "Grenade",
+	"license": "UNLICENSED",
+	"dependencies": {
+		"@types/electron-json-storage": "^4.0.0",
+		"@types/node": "^10.12.11",
+		"@types/node-fetch": "^2.3.7",
+		"@types/react": "^16.7.11",
+		"@types/react-dom": "^16.0.11",
+		"@types/react-router": "^4.4.1",
+		"@types/react-router-dom": "^4.3.1",
+		"node-fetch": "^2.6.0",
+		"react": "^16.6.3",
+		"react-dom": "^16.6.3",
+		"react-router": "^4.3.1",
+		"react-router-dom": "^4.3.1"
+	},
+	"devDependencies": {
+		"autoprefixer": "^9.3.1",
+		"awesome-typescript-loader": "^5.2.1",
+		"css-loader": "^1.0.1",
+		"electron": "^5.0.6",
+		"electron-builder": "^21.0.15",
+		"electron-rebuild": "^1.8.5",
+		"file-loader": "^2.0.0",
+		"html-loader": "^0.5.5",
+		"html-webpack-plugin": "^3.2.0",
+		"image-webpack-loader": "^4.6.0",
+		"mini-css-extract-plugin": "^0.4.5",
+		"node-sass": "^4.10.0",
+		"postcss-loader": "^3.0.0",
+		"sass-loader": "^7.1.0",
+		"style-loader": "^0.23.1",
+		"typescript": "^3.2.1",
+		"uglifyjs-webpack-plugin": "^2.0.1",
+		"webpack": "^4.26.1",
+		"webpack-cli": "^3.1.2",
+		"webpack-dev-server": "^3.1.14"
+	},
+	"build": {
+		"appId": "allenvis.launcher",
+		"copyright": "Copyright © 2019 Grenade",
+		"win": {
+			"target": "portable",
+			"icon": "icon.png"
+		},
+		"directories": {
+			"output": "electron_dist"
+		}
+	},
+	"browser": {
+		"fs": false
+	}
+}
